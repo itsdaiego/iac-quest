@@ -1,0 +1,39 @@
+User name,Password,Access key ID,Secret access key,Console login link
+daiego,,AKIA4D3VIWYNQ3ONBU3J,Y6rtgp4TByqWuAix9p2BBPXsPbXSKm/2ik4vUoN6,https://832932722203.signin.aws.amazon.com/console
+
+// Sign in URL: https://832932722203.signin.aws.amazon.com
+
+// Security group id
+sg-0eb939d7ce0cc78c6
+
+// Instance id
+i-06fde6ab8afdc456f
+
+// Public DNS name
+ec2-34-205-64-218.compute-1.amazonaws.com
+
+// Registry URL
+https://832932722203.dkr.ecr.us-east-1.amazonaws.com
+
+// Postgres password
+dyego222
+
+// Postgres endpoint
+dockerzon-production.caorqczunrbx.us-east-1.rds.amazonaws.com
+
+// Redis endpoint
+dockerzon-production.prkgyn.0001.use1.cache.amazonaws.com
+
+// Subnets Ids
+subnet-0fcfea21
+subnet-72b5ee2e
+subnet-f50be5b8
+subnet-d64f11b1
+subnet-fefb99c0
+subnet-b9c3d3b6
+
+// ELB DNs
+dockerzon-web-1707009097.us-east-1.elb.amazonaws.com
+
+// EC2 DNS
+ec2-3-86-186-182.compute-1.amazonaws.com
