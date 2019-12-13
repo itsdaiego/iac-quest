@@ -1,0 +1,49 @@
+{
+  "variables": {
+    "es_version": "1.7.0",
+    "ansible": "ansible=2.5.1+dfsg-1ubuntu0.1",
+    "name": "es-masternode-{{ user `es_version` }}"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "us-east-1",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "image-id": "ami-00a208c7cdba991ea",
+        "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"]
+    },
+    "instance_type": "t2.small",
+    "ssh_username": "ubuntu",
+    "ami_name": "{{ user `name` }} {{ timestamp }}",
+    "ami_description": "Elasticsearch ({{ user `es_version` }}) master node for cluster of Pagar.me search API",
+    "tags": {
+      "OS": "Linux",
+      "Distro": "Ubuntu Server",
+      "Release": "Bionic 18.04 LTS",
+      "AMIBaseName": "{{ .SourceAMIName }}",
+      "Name": "{{ user `name` }}",
+      "Tool": "Packer",
+      "Team": "Heartbeat"
+    }
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "sudo -S bash '{{.Path}}'",
+      "inline_shebang": "/bin/bash -e -x",
+      "inline": [
+        "DEBIAN_FRONTEND=noninteractive apt update",
+        "DEBIAN_FRONTEND=noninteractive apt install {{ user `ansible` }} -y"
+       ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_files": [
+        "./playbooks/install-packages.yml"
+       ]
+    }
+  ]
+}
